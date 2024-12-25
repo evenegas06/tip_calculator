@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { OrderItem } from '../types';
+import type { MenuItem, OrderItem } from '../types';
 
 export const useOrder = () => {
 	const [order, setOrder] = useState<OrderItem[]>([]);
@@ -7,8 +7,8 @@ export const useOrder = () => {
     /**
      *  Add an item to the order.
      */
-	const addItem = () => {
-		console.log('addItem');
+	const addItem = (item: MenuItem) => {
+		console.log(item);
 	};
 
 	return {
