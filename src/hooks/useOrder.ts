@@ -27,8 +27,17 @@ export const useOrder = () => {
 		setOrder([...order, new_item]);
 	};
 
+	/**
+	 * Remove an item from the order.
+	 */
+	const removeItem = (id: MenuItem['id']) => {
+		const update_order = order.filter((item) => item.id !== id);
+		setOrder(update_order);
+	};
+
 	return {
-        order,
+		order,
 		addItem,
+		removeItem,
 	};
 };
