@@ -1,11 +1,12 @@
 import MenuItem from './components/MenuItem';
 import OrderContent from './components/OrderContent';
 import OrderTotal from './components/OrderTotal';
+import TipForm from './components/TipForm';
 import { MENU_ITEMS } from './data/db';
 import { useOrder } from './hooks/useOrder';
 
 function App() {
-	const { order, addItem, removeItem } = useOrder();
+	const { order, addItem, removeItem, tip, setTip } = useOrder();
 
 	return (
 		<>
@@ -15,7 +16,7 @@ function App() {
 				</h1>
 			</header>
 
-			<main className="grid py-20 mx-auto space-x-5 max-w-7xl md:grid-cols-2">
+			<main className="grid px-5 py-10 mx-auto space-x-5 max-w-7xl md:grid-cols-2">
 				<section className="p-5 border rounded-lg shadow-lg">
 					<h2 className="text-4xl font-black">Menú</h2>
 
@@ -36,7 +37,12 @@ function App() {
 						removeItem={removeItem}
 					/>
 
-					<OrderTotal order={order} />
+					<TipForm setTip={setTip} />
+
+					<OrderTotal
+						order={order}
+						tip={tip}
+					/>
 				</section>
 			</main>
 		</>
