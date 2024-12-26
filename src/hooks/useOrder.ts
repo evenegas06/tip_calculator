@@ -11,11 +11,25 @@ export const useOrder = () => {
 		// const new_item = structuredClone(item);
 		// new_item.quantity = 1;
 
-		const new_item = { ...item, quantity: 1 };
-		setOrder([...order, new_item]);
+		const item_exists = order.find((order_item) => order_item.id === item.id);
+
+		if (item_exists) {
+			const update_order = order.map((order_item) => {
+				if (order_item.id === item.id) {
+					order_item.quantity += 1;
+				}
+				return order_item;
+			});
+
+			setOrder(update_order);
+			return;
+		} else {
+			const new_item = { ...item, quantity: 1 };
+			setOrder([...order, new_item]);
+		}
 	};
 
-    console.log(order);
+	console.log(order);
 
 	return {
 		addItem,
