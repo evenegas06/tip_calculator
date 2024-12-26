@@ -2,9 +2,10 @@ import { TIP_OPTIONS } from '../contants';
 
 type TipFormProps = {
 	setTip: React.Dispatch<React.SetStateAction<number>>;
+	tip: number;
 };
 
-const TipForm = ({ setTip }: TipFormProps) => {
+const TipForm = ({ setTip, tip }: TipFormProps) => {
 	return (
 		<div>
 			<h3 className="text-2xl font-black">Propina:</h3>
@@ -22,6 +23,7 @@ const TipForm = ({ setTip }: TipFormProps) => {
 							id={item.id}
 							value={item.value}
 							onChange={(event) => setTip(Number(event.target.value))}
+							checked={item.value === tip}
 						/>
 					</div>
 				))}

@@ -5,9 +5,10 @@ import { formatCurrency } from '../helpers';
 type OrderTotalProps = {
 	order: OrderItem[];
 	tip: number;
+	resetOrder: () => void;
 };
 
-const OrderTotal = ({ order, tip }: OrderTotalProps) => {
+const OrderTotal = ({ order, tip, resetOrder }: OrderTotalProps) => {
 	/**
 	 * Calculate the subtotal of the order.
 	 */
@@ -22,7 +23,14 @@ const OrderTotal = ({ order, tip }: OrderTotalProps) => {
 	 */
 	const tip_amount = useMemo(() => {
 		return subtotal * tip;
-	}, [tip, order]); 
+	}, [tip, order]);
+
+	/**
+	 * Calculate the total.
+	 */
+	const total = useMemo(() => {
+		return subtotal + tip_amount;
+	}, [subtotal, tip_amount]);
 
 	return (
 		<>
@@ -41,9 +49,17 @@ const OrderTotal = ({ order, tip }: OrderTotalProps) => {
 
 				<p>
 					Total a pagar: &nbsp;
-					<span className="font-bold">$ 0</span>
+					<span className="font-bold">{formatCurrency(total)}</span>
 				</p>
 			</article>
+
+			<button 
+				className="w-full p-3 mt-10 font-bold text-white uppercase bg-black disabled:opacity-25 disabled:cursor-not-allowed"
+				disabled={total === 0}
+				onClick={resetOrder}
+			>
+				Imprimir Ticket
+			</button>
 		</>
 	);
 };

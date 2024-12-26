@@ -36,6 +36,14 @@ export const useOrder = () => {
 		setOrder(update_order);
 	};
 
+	/**
+	 * Reset the order.
+	 */
+	const resetOrder = () => {
+		setOrder([]);
+		setTip(0);
+	};
+
 	return {
 		order,
 		addItem,
@@ -43,5 +51,7 @@ export const useOrder = () => {
 
 		tip,
 		setTip,
+
+		resetOrder,
 	};
 };
