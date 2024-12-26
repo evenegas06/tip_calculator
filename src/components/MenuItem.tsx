@@ -20,4 +20,4 @@ const MenuItem = ({ item, addItem }: MenuItemProps) => {
         </li>
     )
 }
-export default MenuItem
+export default MenuItem;

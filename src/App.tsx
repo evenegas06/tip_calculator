@@ -1,10 +1,11 @@
 import MenuItem from "./components/MenuItem";
+import OrderContent from "./components/OrderContent";
 import { menuItems } from "./data/db";
 import { useOrder } from "./hooks/useOrder";
 
 function App() {
 
-  const { addItem } = useOrder();
+  const { order, addItem } = useOrder();
 
   return (
     <>
@@ -14,8 +15,8 @@ function App() {
         </h1>
       </header>
 
-      <main className="grid py-20 mx-auto max-w-7xl md:grid-cols-2">
-        <section className="p-5">
+      <main className="grid py-20 mx-auto space-x-5 max-w-7xl md:grid-cols-2">
+        <section className="p-5 border rounded-lg shadow-lg">
           <h2 className="text-4xl font-black">Menú</h2>
 
           <ul className="mt-10 space-y-3">
@@ -29,12 +30,12 @@ function App() {
           </ul>
         </section>
 
-        <aside>
-          <h2>Consumo</h2>
-        </aside>
+        <section className="p-5 space-y-10 border border-dashed rounded-lg shadow-lg border-slate-400">
+          <OrderContent order={order} />
+        </section>
       </main>
     </>
   )
 }
 
-export default App
+export default App;
