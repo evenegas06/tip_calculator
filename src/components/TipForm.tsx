@@ -14,7 +14,7 @@ const TipForm = ({ setTip, tip }: TipFormProps) => {
 				{TIP_OPTIONS.map((item) => (
 					<div
 						key={item.id}
-						className="flex gap-2"
+						className="flex gap-4"
 					>
 						<label htmlFor={item.id}>{item.label}</label>
 						<input
